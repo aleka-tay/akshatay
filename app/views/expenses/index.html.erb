@@ -1,15 +1,11 @@
 <!-- This is a template to use with scaffold, it generates a table view.-->
     <h1>Expenses</h1>
 
-    <% if @expenses.exists? %>
-      <%= link_to 'New Expense', new_expense_path %>
-    <% end %>
-
   <% if @expenses.exists? %>
     <div>
-      <table class="table">
+      <table class="table table-bordered">
         <thead>
-          <tr>
+          <tr class="table-dark">
             <th>Title</th>
             <th>Data</th>
             <th>Amount</th>
@@ -29,9 +25,11 @@
               <td><%= expense.description %></td>
               <td><%= expense.category.title %></td>
             <td>
-              <%= link_to "View", expense %>
-              <%= link_to "Edit", edit_expense_path(expense) %>
+              <%= link_to "View", expense, class:"btn btn-outline-info"%>
+              <%= link_to "Edit", edit_expense_path(expense), class:"btn btn-outline-secondary"%>
             </td>
+            <td><%= link_to 'Delete', expense, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-danger btn-sm" %></td>
+          
           </tr>
         <% end %>
         </tbody>
@@ -41,6 +39,10 @@
   <% else %>
     <div class="empty-state">
       <p>Create your first Expense</p>
-      <%= link_to 'New Expense', new_expense_path %>
+      <%= link_to 'New Expense', new_expense_path, class:"btn btn-primary"%>
     </div>
   <% end %>
+
+ <% if @expenses.exists? %>
+      <%= link_to 'New Expense', new_expense_path, class:"btn btn-primary"%>
+    <% end %>

@@ -1,18 +1,21 @@
-  <p class="text-lg font-semibold">Title:</p>
-  <p class="leading-normal"><%= @expense.title %></p>
+<div class="p-5 text-center bg-body-tertiary rounded-3">
+  <h1 class="text-body-emphasis">Title: <%= @expense.title %></h1>
 
-  <p class="text-lg font-semibold">Data:</p>
-  <p class="leading-normal"><%= @expense.data %></p>
+    <strong>Data:</strong>
+    <p class="col-lg-8 mx-auto fs-5 text-muted"><%= @expense.data %></p>
 
-  <p class="text-lg font-semibold">Amount:</p>
-  <p class="leading-normal"><%= @expense.amount %></p>
+    <strong>Amount:</strong>
+    <p class="col-lg-8 mx-auto fs-5 text-muted"><%= @expense.amount %></p>
 
-  <p class="text-lg font-semibold">Description:</p>
-  <p class="leading-normal"><%= @expense.description %></p>
+    <strong>Description:</strong>
+    <p class="col-lg-8 mx-auto fs-5 text-muted"><%= @expense.description %></p>
 
-  <p class="text-lg font-semibold">Category:</p>
-  <p class="leading-normal"><%= @expense.category %></p>
+    <strong>Category:</strong>
+    <p class="col-lg-8 mx-auto fs-5 text-muted"><%= @expense.category.title %></p>
 
+  <div class="d-inline-flex gap-2 mb-5">
+    <%= link_to 'Back', expenses_path, class:"btn btn-outline-secondary btn-lg px-4 rounded-pill"%>
+    <%= link_to 'Edit', edit_expense_path(@expense), class:"d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill"%>
+  </div>
 
-<%= link_to 'Edit', edit_expense_path(@expense) %>
-<%= link_to 'Back', expenses_path %>
+</div>

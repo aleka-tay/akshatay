@@ -1,24 +1,30 @@
 <%= form_with(model: expense) do |form| %>
   <%= render "error_messages", resource: form.object %>
+    <div class="col-md-6">
+      <%= form.label :title, class: "label form-label" %>
+      <%= form.text_field :title, class: "input form-control" %>
+    </div>
+    <div class="col-md-2 col">
+      <%= form.label :data, class: "label form-label" %>
+      <%= form.date_field :data, class: "input form-control" %>
+    </div>
+    <div class="col-md-2 col" >
+      <%= form.label :amount, class: "label form-label" %>
+      <%= form.text_field :amount, class: "input form-control" %>
+    </div>
 
-    <%= form.label :title, class: "label" %>
-    <%= form.text_field :title, class: "input" %>
+    <div class="col-md-6">
+      <%= form.label :description, class: "label form-label" %>
+      <%= form.textarea :description, class: "input form-control" %>
+    </div>
+    <div class="col-md-4">
+      <%= form.label :category_id, class: "label form-label" %>
+      <%= form.collection_select :category_id, Category.all, :id, :title, prompt: "Select a category" , class: "form-select" %>
+    </div>
 
-    <%= form.label :data, class: "label" %>
-    <%= form.date_field :data, class: "input" %>
-
-    <%= form.label :amount, class: "label" %>
-    <%= form.text_field :amount, class: "input" %>
-
-    <%= form.label :description, class: "label" %>
-    <%= form.textarea :description, class: "input" %>
-
-    <%= form.label :category_id, class: "label" %>
-    <%= form.collection_select :category_id, Category.all, :id, :title, prompt: "Select a category" %>
-
-    <%= form.button class: "btn btn-default" %>
+    <%= form.button class: "btn btn-primary" %>
 
     <% if form.object.persisted? %>
-      <%= link_to 'Delete', form.object, class: "btn btn-default", method: :delete, data: { remote: true, confirm: "Are you sure?" } %>
+      <%= link_to 'Delete', expense, method: :delete, data: { remote: true, confirm: "Are you sure?" } %>
     <% end %>
 <% end %>

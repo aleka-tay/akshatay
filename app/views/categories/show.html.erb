@@ -1,9 +1,13 @@
-  <p class="text-lg font-semibold">Title:</p>
-  <p class="leading-normal"><%= @category.title %></p>
 
-  <p class="text-lg font-semibold">Color:</p>
-  <p class="leading-normal"><%= @category.color %></p>
+<div class="p-5 text-center bg-body-tertiary rounded-3">
+  <h1 class="text-body-emphasis">Title: <%= @category.title %></h1>
 
+    <strong>Color:</strong>
+    <p class="col-lg-8 mx-auto fs-5 text-muted"><%= @category.color %></p>
 
-<%= link_to 'Edit', edit_category_path(@category) %>
-<%= link_to 'Back', categories_path %>
+  <div class="d-inline-flex gap-2 mb-5">
+    <%= link_to 'Back', categories_path, class:"btn btn-outline-secondary btn-lg px-4 rounded-pill"%>
+    <%= link_to 'Edit', edit_category_path(@category), class:"d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill"%>
+  </div>
+
+</div>

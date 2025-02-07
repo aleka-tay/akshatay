@@ -49,7 +49,7 @@ class ExpensesController < ApplicationController
 
   # DELETE /expenses/1 or /expenses/1.json
   def destroy
-    @expense.destroy!
+    @expense.destroy
 
     respond_to do |format|
       format.html { redirect_to expenses_path, status: :see_other, notice: "Expense was successfully destroyed." }
