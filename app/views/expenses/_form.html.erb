@@ -14,7 +14,7 @@
     <%= form.textarea :description, class: "input" %>
 
     <%= form.label :category_id, class: "label" %>
-    <%= form.text_field :category_id, class: "input" %>
+    <%= form.collection_select :category_id, Category.all, :id, :title, prompt: "Select a category" %>
 
     <%= form.button class: "btn btn-default" %>
 
