@@ -5,7 +5,14 @@
     <%= form.text_field :title, class: "input" %>
 
     <%= form.label :color, class: "label" %>
-    <%= form.text_field :color, class: "input" %>
+    <%= form.select :color, options_for_select([
+      ["Red", "#FF5733"], 
+      ["Green", "#33FF57"], 
+      ["Blue", "#3357FF"], 
+      ["Pink", "#FF33A1"], 
+      ["Yellow", "#F4C542"], 
+      ["Purple", "#9B59B6"]
+    ], selected: category.color), required: true %>
 
     <%= form.button class: "btn btn-default" %>
 
