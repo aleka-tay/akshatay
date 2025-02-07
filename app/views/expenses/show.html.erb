@@ -1,0 +1,18 @@
+  <p class="text-lg font-semibold">Title:</p>
+  <p class="leading-normal"><%= @expense.title %></p>
+
+  <p class="text-lg font-semibold">Data:</p>
+  <p class="leading-normal"><%= @expense.data %></p>
+
+  <p class="text-lg font-semibold">Amount:</p>
+  <p class="leading-normal"><%= @expense.amount %></p>
+
+  <p class="text-lg font-semibold">Description:</p>
+  <p class="leading-normal"><%= @expense.description %></p>
+
+  <p class="text-lg font-semibold">Category:</p>
+  <p class="leading-normal"><%= @expense.category %></p>
+
+
+<%= link_to 'Edit', edit_expense_path(@expense) %>
+<%= link_to 'Back', expenses_path %>

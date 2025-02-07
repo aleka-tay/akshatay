@@ -1,0 +1,41 @@
+<!-- This is a template to use with scaffold, it generates a table view.-->
+    <h1>Categories</h1>
+
+    <% if @categories.exists? %>
+      <%= link_to 'New Category', new_category_path %>
+    <% end %>
+
+  <% if @categories.exists? %>
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Color</th>
+
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+                          <td><%= category.title %></td>
+                          <td><%= category.color %></td>
+            
+            <td>
+              <%= link_to "View", category %>
+              <%= link_to "Edit", edit_category_path(category) %>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  <% else %>
+    <div class="empty-state">
+      <p>Create your first Category</p>
+      <%= link_to 'New Category', new_category_path %>
+    </div>
+  <% end %>

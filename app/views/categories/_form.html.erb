@@ -1,0 +1,15 @@
+<%= form_with(model: category) do |form| %>
+  <%= render "error_messages", resource: form.object %>
+
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, class: "input" %>
+
+    <%= form.label :color, class: "label" %>
+    <%= form.text_field :color, class: "input" %>
+
+    <%= form.button class: "btn btn-default" %>
+
+    <% if form.object.persisted? %>
+      <%= link_to 'Delete', form.object, class: "btn btn-default", method: :delete, data: { remote: true, confirm: "Are you sure?" } %>
+    <% end %>
+<% end %>

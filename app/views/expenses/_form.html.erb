@@ -1,0 +1,24 @@
+<%= form_with(model: expense) do |form| %>
+  <%= render "error_messages", resource: form.object %>
+
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, class: "input" %>
+
+    <%= form.label :data, class: "label" %>
+    <%= form.date_field :data, class: "input" %>
+
+    <%= form.label :amount, class: "label" %>
+    <%= form.text_field :amount, class: "input" %>
+
+    <%= form.label :description, class: "label" %>
+    <%= form.textarea :description, class: "input" %>
+
+    <%= form.label :category_id, class: "label" %>
+    <%= form.text_field :category_id, class: "input" %>
+
+    <%= form.button class: "btn btn-default" %>
+
+    <% if form.object.persisted? %>
+      <%= link_to 'Delete', form.object, class: "btn btn-default", method: :delete, data: { remote: true, confirm: "Are you sure?" } %>
+    <% end %>
+<% end %>
