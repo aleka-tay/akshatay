@@ -1,0 +1,8 @@
+<% attributes.reject(&:password_digest?).each do |attribute| -%>
+  <p class="text-lg font-semibold"><%= attribute.human_name %>:</p>
+  <p class="leading-normal"><%%= @<%= singular_table_name %>.<%= attribute.name %> %></p>
+
+<% end -%>
+
+<%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %>
+<%%= link_to 'Back', <%= index_helper %>_path %>
