@@ -87,4 +87,11 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  #
+
+
+
+  # The local host is changed to the hosting of our website.
+  # In production, :host should be set to the actual host of your application.
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
