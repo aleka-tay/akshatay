@@ -11,8 +11,9 @@
             <th>Amount</th>
             <th>Description</th>
             <th>Category</th>
-
-            <th>Actions</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
 
@@ -26,6 +27,8 @@
               <td><%= expense.category.title %></td>
             <td>
               <%= link_to "View", expense, class:"btn btn-outline-info"%>
+            </td>
+            <td>
               <%= link_to "Edit", edit_expense_path(expense), class:"btn btn-outline-secondary"%>
             </td>
             <td><%= link_to 'Delete', expense, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure ?' }, class: "btn btn-outline-danger btn-sm" %></td>
