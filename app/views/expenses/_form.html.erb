@@ -1,5 +1,4 @@
 <%= form_with(model: expense) do |form| %>
-  <%= render "error_messages", resource: form.object %>
     <div class="col-md-6">
       <%= form.label :title, class: "label form-label" %>
       <%= form.text_field :title, class: "input form-control" %>

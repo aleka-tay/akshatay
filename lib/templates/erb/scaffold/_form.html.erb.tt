@@ -1,5 +1,4 @@
 <%%= form_with(model: <%= model_resource_name %>) do |form| %>
-  <%%= render "error_messages", resource: form.object %>
 
 <% attributes.each do |attribute| -%>
 <% if attribute.password_digest? -%>

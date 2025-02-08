@@ -27,6 +27,8 @@
               <%%= link_to "View", <%= singular_table_name %> %>
               <%%= link_to "Edit", edit_<%= singular_table_name %>_path(<%= singular_table_name %>) %>
             </td>
+            <%%# Install $ rails importmap:install $ rails turbo:install stimulus:install beforhand%>
+            <td><%= link_to 'Delete', <%= singular_table_name %>, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure ?' }, class: "btn btn-outline-danger btn-sm" %></td>
           </tr>
         <%% end %>
         </tbody>
