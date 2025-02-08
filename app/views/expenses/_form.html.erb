@@ -1,29 +1,33 @@
 <%= form_with(model: expense) do |form| %>
-    <div class="col-md-6">
+    <div class="col-md-6 my-2">
       <%= form.label :title, class: "label form-label" %>
       <%= form.text_field :title, class: "input form-control" %>
     </div>
-    <div class="col-md-2 col">
-      <%= form.label :data, class: "label form-label" %>
-      <%= form.date_field :data, class: "input form-control" %>
-    </div>
-    <div class="col-md-2 col" >
-      <%= form.label :amount, class: "label form-label" %>
-      <%= form.text_field :amount, class: "input form-control" %>
+    <div class="row my-2">
+      <div class="col col-lg-2">
+        <%= form.label :data, class: "label form-label" %>
+        <%= form.date_field :data, class: "input form-control" %>
+      </div>
+      <div class="col col-lg-2" >
+        <%= form.label :amount, class: "label form-label" %>
+        <%= form.text_field :amount, class: "input form-control" %>
+      </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-6 my-2">
       <%= form.label :description, class: "label form-label" %>
       <%= form.textarea :description, class: "input form-control" %>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 mb-2">
       <%= form.label :category_id, class: "label form-label" %>
-      <%= form.collection_select :category_id, Category.all, :id, :title, prompt: "Select a category" , class: "form-select" %>
+      <%= form.collection_select :category_id, Category.all, :id, :title, { prompt: "Select a category" } , class: "form-select"%>
     </div>
 
-    <%= form.button class: "btn btn-primary" %>
-
+    <div class="col my-2">
+      <%= form.button class: "btn btn-primary" %>
+      <%= link_to 'Back', expenses_path, class: "link btn btn-primary" %>
+    </div>
     <% if form.object.persisted? %>
-      <%= link_to 'Delete', expense, method: :delete, data: { remote: true, confirm: "Are you sure?" } %>
+      <%= link_to 'Delete', expense, method: :delete, data: { remote: true, confirm: "Are you sure?" }, class: "btn btn-primary"%>
     <% end %>
 <% end %>
