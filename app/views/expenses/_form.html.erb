@@ -42,8 +42,6 @@
     <div class="col my-2">
       <%= form.button class: "btn btn-primary" %>
       <%= link_to 'Back', expenses_path, class: "link btn btn-primary" %>
+      <%= link_to 'Delete', @expense, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure ?' }, class: "btn btn-danger" %>
     </div>
-    <% if form.object.persisted? %>
-      <%= link_to 'Delete', expense, method: :delete, data: { remote: true, confirm: "Are you sure?" }, class: "btn btn-primary"%>
-    <% end %>
 <% end %>

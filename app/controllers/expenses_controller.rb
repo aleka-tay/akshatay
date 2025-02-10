@@ -1,5 +1,7 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :correct_user, only: [ :edit, :update, :destroy ]
 
   # GET /expenses or /expenses.json
   def index
@@ -12,7 +14,8 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/new
   def new
-    @expense = Expense.new
+    # @expense = Expense.new
+    @expense = current_user.expense.build
   end
 
   # GET /expenses/1/edit
@@ -21,7 +24,8 @@ class ExpensesController < ApplicationController
 
   # POST /expenses or /expenses.json
   def create
-    @expense = Expense.new(expense_params)
+    # @expense = Expense.new(expense_params)
+    @expense = current_user.expense.build(expense_params)
 
     respond_to do |format|
       if @expense.save
@@ -57,6 +61,14 @@ class ExpensesController < ApplicationController
     end
   end
 
+  def correct_user
+    @expense = current_user.expense.find_by(id: params[:id])
+    redirect_to expense_path, notice: "Not Autorized To edit this Expense" if @expense.nil?
+  end
+
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
@@ -65,6 +77,6 @@ class ExpensesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def expense_params
-      params.require(:expense).permit(:title, :date, :amount, :description, :category_id, :user_id)
+      params.require(:expense).permit(:title, :data, :amount, :description, :category_id, :user_id)
     end
 end

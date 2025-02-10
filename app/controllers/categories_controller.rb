@@ -1,5 +1,9 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+  # Only logged in users can temper with data
+  before_action :authenticate_user!, except: [ :index, :show ]
+  # Only user created can modify the data
+  before_action :correct_user, only: [ :edit, :update, :destroy ]
 
   # GET /categories or /categories.json
   def index
@@ -57,14 +61,21 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def correct_user
+    @category = current_user.category.find_by(id: params[:id])
+    redirect_to category_path, notice: "Not Autorized To edit this Category" if @category.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params.expect(:id))
     end
 
+
+
     # Only allow a list of trusted parameters through.
     def category_params
-      params.expect(category: [ :title, :color ])
+      params.require(:category).permit(:title, :color, :user_id)
     end
 end

@@ -1,22 +1,20 @@
 <%= form_with(model: category) do |form| %>
 
-
-    <%= form.label :title, class: "label" %>
-    <%= form.text_field :title, class: "input" %>
-
-    <%= form.label :color, class: "label" %>
-    <%= form.select :color, options_for_select([
-      ["Red", "#FF5733"], 
-      ["Green", "#33FF57"], 
-      ["Blue", "#3357FF"], 
-      ["Pink", "#FF33A1"], 
-      ["Yellow", "#F4C542"], 
-      ["Purple", "#9B59B6"]
-    ], selected: category.color), required: true %>
-
-    <%= form.button class: "btn btn-default" %>
-
-    <% if form.object.persisted? %>
-      <%= link_to 'Delete', form.object, class: "btn btn-default", method: :delete, data: { remote: true, confirm: "Are you sure?" } %>
-    <% end %>
+  <div class="col-md-6 my-2">
+    <%# form.label :title, class: "label form-label" %>
+    <%= form.text_field :title, class: "input form-control", placeholder:"Title"%>
+  </div>
+  <div class="col-md-6 my-2">
+    <%# form.label :color, class: "label form-label" %>
+    <%= form.select :color, Category::PREDEFINED_COLORS.map { |name, hex| [name, hex] }, { prompt: "Select a color" }, required: true, class: "form-select"%>
+  </div>
+  <div class="col-md-6 my-2">
+    <% form.label :user_id, class: "label form-label" %>
+    <%= form.number_field :user_id, id: :category_user_id, class: "input form-control", value: current_user.id, type: "hidden"%>
+  </div>
+  <%= form.button class: "btn btn-primary" %>
+  <br />
+  <% if form.object.persisted? %>
+    <%= link_to 'Delete', form.object, class: "btn btn-default", method: :delete, data: { remote: true, confirm: "Are you sure?" } %>
+  <% end %>
 <% end %>

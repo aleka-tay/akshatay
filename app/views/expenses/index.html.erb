@@ -1,51 +1,57 @@
 <!-- This is a template to use with scaffold, it generates a table view.-->
-    <h1>Expenses</h1>
+  <h1>Expenses</h1>
 
   <% if @expenses.exists? %>
     <div>
-      <table class="table table-bordered">
-        <thead>
-          <tr class="table-success">
-            <th>Title</th>
-            <th>Data</th>
-            <th>Amount</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>View</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
+      <% if user_signed_in? %>
+        <table class="table table-bordered">
+          <thead>
+            <tr class="table-success">
+              <th>Title</th>
+              <th>Data</th>
+              <th>Amount</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>View</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
 
-        <tbody>
-        <% @expenses.each do |expense| %>
-          <tr style="background-color: <%= expense.category.color if expense.category.present?%>;">
-              <td><%= expense.title %></td>
-              <td><%= expense.data %></td>
-              <td><%= expense.amount %></td>
-              <td><%= expense.description %></td>
-              <td><%= expense.category.title %></td>
-            <td>
-              <%= link_to "View", expense, class:"btn btn-outline-info"%>
-            </td>
-            <td>
-              <%= link_to "Edit", edit_expense_path(expense), class:"btn btn-outline-secondary"%>
-            </td>
-            <td><%= link_to 'Delete', expense, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure ?' }, class: "btn btn-outline-danger btn-sm" %></td>
-          
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+          <tbody>
+          <% @expenses.each do |expense| %>
+            <% if expense.user == current_user%>
+              <tr>
+                  <td><%= expense.title %></td>
+                  <td><%= expense.data %></td>
+                  <td><%= expense.amount %></td>
+                  <td><%= expense.description %></td>
+                  <td><%= expense.category.title %></td>
+                <td>
+                  <%= link_to "View", expense, class:"btn btn-outline-info"%>
+                </td>
+                <td>
+                  <%= link_to "Edit", edit_expense_path(expense), class:"btn btn-outline-secondary"%>
+                </td>
+                <td><%= link_to 'Delete', expense, method: :delete, data: { turbo_method: :delete, turbo_confirm: 'Are you sure ?' }, class: "btn btn-outline-danger" %></td>
+              
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <h1>Hello World</h1>
+      <% end %>
     </div>
 
-  <% else %>
-    <div class="empty-state">
-      <p>Create your first Expense</p>
-      <%= link_to 'New Expense', new_expense_path, class:"btn btn-primary"%>
-    </div>
-  <% end %>
-
- <% if @expenses.exists? %>
-      <%= link_to 'New Expense', new_expense_path, class:"btn btn-primary"%>
+    <% else %>
+      <div class="empty-state">
+        <p>Create your first Expense</p>
+        <%= link_to 'New Expense', new_expense_path, class:"btn btn-primary"%>
+      </div>
     <% end %>
+
+<% if @expenses.exists? %>
+      <%= link_to 'New Expense', new_expense_path, class:"btn btn-primary"%>
+<% end %>
