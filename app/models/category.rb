@@ -1,13 +1,13 @@
 class Category < ApplicationRecord
   PREDEFINED_COLORS = {
-    "Red" => "#FF5733",
-    "Blue" => "#3498db",
-    "Green" => "#2ecc71",
-    "Yellow" => "#f1c40f",
-    "Purple" => "#9b59b6",
-    "Orange" => "#e67e22"
+    "red" => "#FF5733",
+    "blue" => "#3498db",
+    "green" => "#2ecc71",
+    "yellow" => "#f1c40f",
+    "purple" => "#9b59b6",
+    "orange" => "#e67e22"
   }.freeze
-  has_many :expense
+  has_many :expense, dependent: :destroy
   belongs_to :user
 
   validates :title, presence: true
