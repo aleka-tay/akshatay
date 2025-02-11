@@ -1,24 +1,23 @@
-# README
+# AkshaTay Budget WebApp  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**AkshaTay** is a simple and fun budgeting web app. The name comes from my language, where **"Aksha" means "money"**, and **"Tay" is a cute suffix**.  
 
-Things you may want to cover:
+This app is built using **Ruby on Rails** for the backend and **HTML with Bootstrap** for the frontend. I chose Bootstrap to ensure an **easy-to-use and accessible layout**.  
 
-* Ruby version
+## Features  
+ Each user has their own account  
+ Users can create categories for expenses  
+ Users can add expenses under categories  
+ Users can delete their account  
 
-* System dependencies
+More features are coming soon!
 
-* Configuration
+## Installation  
 
-* Database creation
+To run this app locally, follow these steps:  
 
-* Database initialization
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/yourusername/AkshaTay.git  
+   cd AkshaTay  
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
