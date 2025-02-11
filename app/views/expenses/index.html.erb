@@ -1,8 +1,8 @@
 <!-- This is a template to use with scaffold, it generates a table view.-->
-  <h1>Expenses</h1>
 
+<h1 style="text-align: center;">Expenses</h1>
   <% if @expenses.exists? %>
-    <div>
+    <div class="container text-center">
       <% if user_signed_in? %>
         <table class="table table-bordered">
           <thead>
@@ -41,16 +41,18 @@
           </tbody>
         </table>
       <% else %>
-        <h1>Hello World</h1>
+        <h1>Welcome, New User</h1>
+        <p> This is an Budget App. This app is going to help to keep track of your budget and expenses.</p>
+        <strong> Click below to try it!</strong>
       <% end %>
     </div>
 
-    <% else %>
-      <div class="empty-state">
-        <p>Create your first Expense</p>
-        <%= link_to 'New Expense', new_expense_path, class:"btn btn-primary"%>
-      </div>
-    <% end %>
+  <% else %>
+    <div class="empty-state text-center">
+      <p>Create your first Expense</p>
+      <%= link_to 'New Expense', new_expense_path, class:"btn btn-primary"%>
+    </div>
+  <% end %>
 
 <% if @expenses.exists? %>
       <%= link_to 'New Expense', new_expense_path, class:"btn btn-primary"%>
