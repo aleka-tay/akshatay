@@ -7,8 +7,9 @@ This app is built using **Ruby on Rails** for the backend and **HTML with Bootst
 ## Features  
  Each user has their own account  
  Users can create categories for expenses  
- Users can add expenses under categories  
- Users can delete their account  
+ Users can add expenses under categories 
+ User can track their expenses on graph
+ Users can delete their account 
 
 More features are coming soon!
 
