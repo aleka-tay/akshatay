@@ -17,8 +17,9 @@
               <th>Delete</th>
             </tr>
           </thead>
-
+          <%= line_chart Expense.group_by_day(:data).count %>
           <tbody>
+            
           <% @expenses.each do |expense| %>
             <% if expense.user == current_user%>
               <tr>
